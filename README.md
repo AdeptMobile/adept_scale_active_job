@@ -2,7 +2,7 @@
 Short description and motivation.
 
 ## Usage
-How to use my plugin.
+This plugin extends the `ActiveJob::Base` class in order to insert ADEPT_SCALE tagged logs into your app's STDOUT. The tags include ['JOB_ENQUEUED', 'JOB_STARTED', 'JOB_FINISHED', 'JOB_FAILED'] and are used by AdeptScale to keep the current state of your job queue for the purpose of scaling worker dynos.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -21,8 +21,17 @@ Or install it yourself as:
 $ gem install adept_scale_active_job
 ```
 
-## Contributing
-Contribution directions go here.
+## Configuration
+After installation, change any ActiveJob based object to inherit from ```AdeptScaleActiveJob::Base``` instead of the default ```AdeptScaleActiveJob::Base```.
+For example, the simplest method would be at the ApplicationJob level:
+```
+# /app/jobs/applicaiton_job.rb
+
+class ApplicationJob < AdeptScaleActiveJob::Base
+end
+```
 
 ## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+Copyright 2018 AdeptLabs INC, All rights reserved.
+
+
