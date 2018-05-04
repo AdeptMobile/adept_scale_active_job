@@ -7,7 +7,7 @@ module AdeptScaleActiveJob
 		end
 
 		after_enqueue do |job|
-			adept_scale_logger.add(6, "ADEPT_SCALE JOB_QUEUED")
+			adept_scale_logger.add(6, "ADEPT_SCALE JOB_QUEUED dyno_type=#{job.inspect}")
 		end
 
 		before_perform do |job|
