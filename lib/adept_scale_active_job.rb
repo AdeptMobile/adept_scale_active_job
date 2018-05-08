@@ -40,7 +40,7 @@ module AdeptScaleActiveJob
 		#@param Hash | a key/value hash of our params.
 		def format_params job_params
 			#Only allow these params to be stringified
-			params = [:dyno_type, :job_id, :scheduled_at, :scheduled_at, :total_queue, :running_jobs]
+			params = [:dyno_type, :job_id, :scheduled_at, :total_queue, :running_jobs]
 			params.reduce([]) do |ary, param|
 				ary << "#{param}=#{job_params[param]}" if job_params.has_key?(param)
 				ary
